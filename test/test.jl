@@ -6,7 +6,7 @@ using LinearAlgebra
 using EMD 
 using Tulip
 
-M, N = 2500, 1000
+M, N = 250, 100
 a = normalize(rand(M), 1)
 a_spt = randn(M, 3)
 b = normalize(rand(N), 1)
