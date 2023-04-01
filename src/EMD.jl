@@ -16,6 +16,24 @@ module EMD
         result_code=ccall((:EMD_wrap,"libemd"), Int64,
                                       (Int64, Int64, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, UInt64), 
                                       nb, na, b, a, C, coupling, v, u, cost, maxiter)
-        return u, v, coupling, cost, result_code+1
+        return u, v, coupling, first(cost), result_code+1
     end
+    
+    function emd(a, b, C; kwargs...)
+        _, _, coupling, _, result_code = emd_c(a, b, C; kwargs...)
+        if result_code != 2
+            throw(ErrorException(result_code_msg[result_code]))
+        end
+        return coupling 
+    end
+
+    function emd2(a, b, C; kwargs...)
+        _, _, _, cost, result_code = emd_c(a, b, C; kwargs...)
+        if result_code != 2
+            throw(ErrorException(result_code_msg[result_code]))
+        end
+        return cost 
+    end
+
+    export emd, emd2, emd_c
 end
