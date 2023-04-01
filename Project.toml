@@ -1,0 +1,4 @@
+name = "EMD"
+uuid = "a0f2dadc-650e-4fef-aa68-20145ca32a15"
+authors = ["stephen zhang <syz@syz.id.au>"]
+version = "0.1.0"
