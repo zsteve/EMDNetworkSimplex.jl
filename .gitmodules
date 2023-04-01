@@ -1,0 +1,3 @@
+[submodule "network_simplex"]
+	path = network_simplex
+	url = https://github.com/nbonneel/network_simplex/
